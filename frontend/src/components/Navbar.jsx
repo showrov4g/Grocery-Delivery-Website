@@ -6,11 +6,12 @@ import { useAppContext } from '../context/AppContext';
 const Navbar = () => {
     // state variables 
     const [open, setOpen] = React.useState(false);
-    const { user, setUser, setShowUserLogin } = useAppContext();
+    const { user, setUser, setShowUserLogin,navigate} = useAppContext();
 
     // functions 
     const logout = async()=>{
         setUser(null);
+        navigate("/")
     }
 
     return (
@@ -37,9 +38,11 @@ const Navbar = () => {
                         <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">3</button>
                     </div>
 
-                    <button className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full">
+                   {!user ? (<button className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full">
                         Login
-                    </button>
+                    </button>): (
+                        <div></div>
+                    )}
                 </div>
 
                 <button onClick={() => open ? setOpen(false) : setOpen(true)} aria-label="Menu" className="sm:hidden">
@@ -48,7 +51,8 @@ const Navbar = () => {
                 </button>
 
                 {/* Mobile Menu */}
-                <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
+                { open && (
+                    <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
                     <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
                     <NavLink to="/products" onClick={() => setOpen(false)}>All Products</NavLink>
                     {
@@ -60,11 +64,11 @@ const Navbar = () => {
                         setShowUserLogin(true)
                          }} className="cursor-pointer px-6 py-2 mt-2 bg-primary  hover:bg-primary-dull transition text-white rounded-full text-sm">
                         Login
-                    </button>) : (<button className="cursor-pointer px-6 py-2 mt-2 bg-primary  hover:bg-primary-dull transition text-white rounded-full text-sm">
+                    </button>) : (<button onClick={logout} className="cursor-pointer px-6 py-2 mt-2 bg-primary  hover:bg-primary-dull transition text-white rounded-full text-sm">
                         Logout
                     </button>)}
 
-                </div>
+                </div>)}
 
             </nav >
         </div >
