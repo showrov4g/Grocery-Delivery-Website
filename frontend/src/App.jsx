@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/navbar/Navbar'
 import MainBanner from './components/mainBanner/MainBanner'
 import { Route, Routes } from 'react-router'
+import Home from './pages/home/Home'
 
 const App = () => {
   return (
@@ -9,7 +10,7 @@ const App = () => {
       <Navbar/>
       <div>
         <Routes>
-          <Route></Route>
+          <Route path='/' element={<Home/>}></Route>
         </Routes>
       </div>
     </div>
