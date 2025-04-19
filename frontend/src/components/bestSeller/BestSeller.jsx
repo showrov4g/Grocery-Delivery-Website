@@ -1,4 +1,5 @@
 import React from 'react'
+import ProductCart from '../productCart/ProductCart'
 
 const BestSeller = () => {
   return (
@@ -6,7 +7,7 @@ const BestSeller = () => {
       <p className='text-2xl md:text-3xl font-medium'>Best Sellers </p>
       {/* product list */}
       <div>
-
+        <ProductCart/>
       </div>
     </div>
   )
