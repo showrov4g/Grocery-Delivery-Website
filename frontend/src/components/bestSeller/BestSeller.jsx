@@ -9,7 +9,8 @@ const BestSeller = () => {
       <p className='text-2xl md:text-3xl font-medium'>Best Sellers </p>
       {/* product list */}
       <div>
-        <ProductCart product={products[0]}/>
+        {products.filter((product)=>product.inStock).slice(0,5).map((product, index)=>( <ProductCart key={index} product={product}/>))}
+       
       </div>
     </div>
   )
