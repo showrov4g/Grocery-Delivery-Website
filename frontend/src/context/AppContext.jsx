@@ -72,6 +72,7 @@ export const AppContextProvider = ({ children }) => {
         setShowUserLogin,
         products,
         currency,
+        cartItems,
         addToCart,
         updateCartItem, 
         removeFromCart
