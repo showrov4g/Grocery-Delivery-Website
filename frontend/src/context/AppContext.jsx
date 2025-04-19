@@ -42,6 +42,10 @@ export const AppContextProvider = ({ children }) => {
         toast.success("Cart updated");
     }   
 
+    // remove cart item form cart 
+    const removeFromCart= ()=>{
+        
+    }
 
 
     useEffect(()=>{
@@ -60,7 +64,8 @@ export const AppContextProvider = ({ children }) => {
         setShowUserLogin,
         products,
         currency,
-        addToCart
+        addToCart,
+        updateCartItem
     }
     return <AppContext.Provider value={value}>
         {children}
