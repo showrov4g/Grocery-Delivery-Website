@@ -15,49 +15,50 @@ export const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isSeller, setIsSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
-    const [products,setProducts] = useState([]);
-    const [cartItems,setCartItems] = useState({})
+    const [products, setProducts] = useState([]);
+    const [cartItems, setCartItems] = useState({})
 
 
     // product data fetch 
-    const fetchProduct = async()=>{
+    const fetchProduct = async () => {
         setProducts(dummyProducts);
     }
     // add product to cart 
-    const addToCart =()=>{
+    const addToCart = () => {
         let cartData = structuredClone(cartItems);
-        if(cartData[itemId]){
+        if (cartData[itemId]) {
             cartData[itemId] += 1;
-        }else{
+        } else {
             cartData[itemId] = 1;
         }
         setCartItems(cartData);
         toast.success("Added to cart");
     }
     //update cart item quantity
-    const updateCartItem = (itemId, quantity)=>{
+    const updateCartItem = (itemId, quantity) => {
         let cartData = structuredClone(cartItems);
         cartData[itemId] = quantity;
         setCartItems(cartData);
         toast.success("Cart updated");
-    }   
+    }
 
     // remove cart item form cart 
-    const removeFromCart= ()=>{
+    const removeFromCart = () => {
         let cartData = structuredClone(cartItems);
-        if(cartData[itemId]){
+        if (cartData[itemId]) {
             cartData[itemId] -= 1;
-            if(cartData[itemId]===0){
+            if (cartData[itemId] === 0) {
                 delete cartData[itemId];
             }
         }
         toast.success("Remove From Cart");
+        setCartItems(cartData);
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchProduct();
-    },[])
+    }, [])
 
 
 
@@ -72,7 +73,8 @@ export const AppContextProvider = ({ children }) => {
         products,
         currency,
         addToCart,
-        updateCartItem
+        updateCartItem, 
+        removeFromCart
     }
     return <AppContext.Provider value={value}>
         {children}

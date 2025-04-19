@@ -2,12 +2,12 @@ import React from 'react'
 import { assets } from '../../assets/assets';
 import { useAppContext } from '../../context/AppContext';
 
-const ProductCart = ({product}) => {
+const ProductCart = ({ product }) => {
     const [count, setCount] = React.useState(0);
 
-    const {currency} = useAppContext()
+    const { currency, addToCart, updateCartItem, removeFromCart } = useAppContext()
 
- 
+
     return (
         <div>
             <div className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full">
@@ -19,15 +19,15 @@ const ProductCart = ({product}) => {
                     <p className="text-gray-700 font-medium text-lg truncate w-full">{product.name}</p>
                     <div className="flex items-center gap-0.5">
                         {Array(5).fill('').map((_, i) => (
-                           
-                               <img key={i} src={i<4 ? assets.star_icon : assets.star_dull_icon} alt="reviews" className='w-3 md:max-w-3.5' />
-                         
+
+                            <img key={i} src={i < 4 ? assets.star_icon : assets.star_dull_icon} alt="reviews" className='w-3 md:max-w-3.5' />
+
                         ))}
                         <p>(4)</p>
                     </div>
                     <div className="flex items-end justify-between mt-3">
                         <p className="md:text-xl text-base font-medium text-indigo-500">
-                           {currency} ${product.offerPrice} {' '} <span className="text-gray-500/60 md:text-sm text-xs line-through">{currency}${product.price}{" "}</span>
+                            {currency} ${product.offerPrice} {' '} <span className="text-gray-500/60 md:text-sm text-xs line-through">{currency}${product.price}{" "}</span>
                         </p>
                         <div className="text-indigo-500">
                             {count === 0 ? (
