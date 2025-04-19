@@ -50,7 +50,8 @@ export const AppContextProvider = ({ children }) => {
         showUserLogin,
         setShowUserLogin,
         products,
-        currency
+        currency,
+        addToCart
     }
     return <AppContext.Provider value={value}>
         {children}
