@@ -4,6 +4,7 @@ import MainBanner from './components/mainBanner/MainBanner'
 import { Route, Routes, useLocation } from 'react-router'
 import Home from './pages/home/Home'
 import  { Toaster } from 'react-hot-toast';
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   const isSellerPath = useLocation().pathname.includes("seller")
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/' element={<Home />}></Route>
         </Routes>
       </div>
+      
     </div>
   )
 }
