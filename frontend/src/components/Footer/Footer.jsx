@@ -32,7 +32,7 @@ const Footer = () => {
                             <ul className="text-sm space-y-1">
                                 {section.links.map((link, i) => (
                                     <li key={i}>
-                                        <a href="#" className="hover:underline transition">{link}</a>
+                                        <a href={link.url} className="hover:underline transition">{link.text}</a>
                                     </li>
                                 ))}
                             </ul>
@@ -41,7 +41,7 @@ const Footer = () => {
                 </div>
             </div>
             <p className="py-4 text-center text-sm md:text-base text-gray-500/80">
-                Copyright 2025 © PrebuiltUI All Right Reserved.
+            Copyright 2025 © Ghosh.dev All Right Reserved.
             </p>
         </div>
     </div>
