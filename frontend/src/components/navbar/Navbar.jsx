@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 import { useAppContext } from '../../context/AppContext';
@@ -6,13 +6,18 @@ import { useAppContext } from '../../context/AppContext';
 const Navbar = () => {
     // state variables 
     const [open, setOpen] = React.useState(false);
-    const { user, setUser, setShowUserLogin,navigate} = useAppContext();
+    const { user, setUser, setShowUserLogin,navigate, searchQuery, 
+        setSearchQuery} = useAppContext();
 
     // functions 
     const logout = async()=>{
         setUser(null);
         navigate("/")
     }
+    // useEffect 
+    useEffect(()=>{
+        
+    },[])
 
     return (
         <div>
