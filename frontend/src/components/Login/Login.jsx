@@ -9,8 +9,9 @@ const Login = () => {
     const {setShowUserLogin} = useAppContext();
 
     // submit functions 
-    const onSubmitHandler =()=>{
-
+    const onSubmitHandler = async(event)=>{
+        event.preventDefault();
+        
     }
 
 
