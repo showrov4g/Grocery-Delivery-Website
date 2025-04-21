@@ -6,12 +6,18 @@ const Login = () => {
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const {setShowUserLogin} = useAppContext();
+    // context file 
+
+    const {setShowUserLogin, setUser} = useAppContext();
 
     // submit functions 
     const onSubmitHandler = async(event)=>{
         event.preventDefault();
-        
+        setUser({
+            email: "test@ghosh.dev",
+            name: "Ghosh"
+        })
+        setShowUserLogin(false);
     }
 
 
