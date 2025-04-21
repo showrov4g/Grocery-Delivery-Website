@@ -13,7 +13,7 @@ const Category = () => {
                 {categories.map((category, index) => (
                     <>
                         <div className='group cursor-pointer py-5 px-3 gap-2 rounded-lg flex flex-col justify-center items-center' style={{ backgroundColor: category.bgColor }} onClick={() => {
-                            navigate(`/products/${category.path.toLocaleLowerCase()}`)
+                            navigate(`products/${category.path.toLocaleLowerCase()}`)
                             scrollTo(0,0)
                         }} >
                             <img src={category.image} alt="category_image" className='group-hover:scale-108 transition max-w-28' />

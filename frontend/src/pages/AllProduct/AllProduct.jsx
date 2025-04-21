@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import ProductCart from '../../components/productCart/ProductCart';
 import { useAppContext } from '../../context/AppContext';
+import { useParams } from 'react-router-dom';
 
 const AllProduct = () => {
-    const { products, searchQuery, setSearchQuery } = useAppContext();
+    const { products, searchQuery } = useAppContext();
     const [filterProduct, SetFilterProduct] = useState([]);
+    const { category } = useParams();
 
     useEffect(() => {
-        if (searchQuery.length > 0) {
-            SetFilterProduct(
-                products.filter(product =>
-                    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-                )
+        let filtered = products;
+
+        if (category) {
+            filtered = filtered.filter(product =>
+                product.category.toLowerCase() === category.toLowerCase()
             );
-        } else {
-            SetFilterProduct(products);
         }
-    }, [products, searchQuery]);
+
+        if (searchQuery.length > 0) {
+            filtered = filtered.filter(product =>
+                product.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+
+        SetFilterProduct(filtered);
+    }, [products, searchQuery, category]);
 
     return (
         <div className='mt-16 flex flex-col'>
