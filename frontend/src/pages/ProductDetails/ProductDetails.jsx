@@ -102,10 +102,11 @@ const ProductDetails = () => {
                     </div>
                 </div>
 
-                {/* Optionally show related products */}
+                {/* show related products */}
                 {relatedProducts.length > 0 && (
                     <div className="mt-16">
-                        <h2 className="text-xl font-semibold mb-4">Related Products</h2>
+                        <p className="text-xl font-semibold mb-4">Related Products</p>
+                        <div className='w-20 h-0.5 bg-primary rounded-full mt-2'></div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {relatedProducts.map((item) => (
                                 <div key={item._id} className="border p-3 rounded hover:shadow">
