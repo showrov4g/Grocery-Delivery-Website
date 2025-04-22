@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom'; // ✅ Correct imports
 import { useAppContext } from '../../context/AppContext';
 import { assets } from '../../assets/assets';
+import ProductCart from '../../components/productCart/ProductCart';
 
 const ProductDetails = () => {
     const { products, navigate, currency, addToCart } = useAppContext();
@@ -106,11 +107,16 @@ const ProductDetails = () => {
                 {relatedProducts.length > 0 && (
                     <div className='flex flex-col items-center mt-20'>
                         <div className='flex flex-col items-center w-max'>
-                            <p>Related Products</p>
+                            <p className='text-3xl font-medium'>Related Products</p>
                             <div className='w-20 h-0.5 bg-primary rounded-full mt-2'></div>
                         </div>
+                        <div>
+                            {relatedProducts.filter((product)=> product.inStock).map((product, index)=>(
+                                <ProductCart key={index} product={product}/>
+                            ))}
+                        </div>
                     </div>
-                    
+
                 )}
             </div>
         </div>
