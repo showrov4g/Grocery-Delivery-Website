@@ -1,33 +1,33 @@
 import { useEffect, useState } from "react"
 import { useAppContext } from "../../context/AppContext";
-import { dummyAddress } from "../../assets/assets";
+import { assets, dummyAddress } from "../../assets/assets";
 
 const Cart = () => {
-    const {products, currency, cartItems, removeFromCart, getCartCount,updateCartItem, navigate,getCartAmount,} = useAppContext();
+    const { products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, navigate, getCartAmount, } = useAppContext();
 
-    const[cartArray, setCartArray] = useState([])
-    const[address, setAddress] = useState(dummyAddress)
+    const [cartArray, setCartArray] = useState([])
+    const [address, setAddress] = useState(dummyAddress)
     const [showAddress, setShowAddress] = useState(false);
     const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0]);
     const [paymentOptions, setPaymetnOptions] = useState("COD");
 
-    const getCart = ()=>{
+    const getCart = () => {
         let tempArray = [];
-        for(const key in cartItems){
-            const product = products.find((item)=>item._id === key);
+        for (const key in cartItems) {
+            const product = products.find((item) => item._id === key);
             product.quantity = cartItems[key];
             tempArray.push
         }
-       setCartArray(tempArray)
+        setCartArray(tempArray)
     }
 
-    useEffect(()=>{
-        if(products.length > 0 && cartItems ){
+    useEffect(() => {
+        if (products.length > 0 && cartItems) {
             getCart();
         }
-    },[products,cartItems])
-    
-    return products.length >0 && cartItems ? (
+    }, [products, cartItems])
+
+    return products.length > 0 && cartItems ? (
         <div>
             <div className="flex flex-col md:flex-row mt-16">
                 <div className='flex-1 max-w-4xl'>
@@ -41,20 +41,31 @@ const Cart = () => {
                         <p className="text-center">Action</p>
                     </div>
 
-                    {products.map((product, index) => (
+                    {cartArray.map((product, index) => (
                         <div key={index} className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3">
                             <div className="flex items-center md:gap-6 gap-3">
-                                <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
-                                    <img className="max-w-full h-full object-cover" src={product.image} alt={product.name} />
+                                <div
+                                    onClick={() => {
+                                        navigate(`/products/${product.category.toLowerCase()}/${product._id}`);
+                                        scrollTo(0, 0);
+                                    }}
+                                    className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded"
+                                >
+                                    <img
+                                        className="max-w-full h-full object-cover"
+                                        src={product.image[0]}
+                                        alt={product.name}
+                                    />
                                 </div>
+
                                 <div>
                                     <p className="hidden md:block font-semibold">{product.name}</p>
                                     <div className="font-normal text-gray-500/70">
-                                        <p>Size: <span>{product.size || "N/A"}</span></p>
+                                        <p>Weight: <span>{product.weight || "N/A"}</span></p>
                                         <div className='flex items-center'>
                                             <p>Qty:</p>
                                             <select className='outline-none'>
-                                                {Array(5).fill('').map((_, index) => (
+                                                {Array(cartItems[product._id]>9 ? cartItems[product._id] : 9).fill('').map((_, index) => (
                                                     <option key={index} value={index + 1}>{index + 1}</option>
                                                 ))}
                                             </select>
@@ -62,11 +73,9 @@ const Cart = () => {
                                     </div>
                                 </div>
                             </div>
-                            <p className="text-center">${product.offerPrice * product.quantity}</p>
-                            <button className="cursor-pointer mx-auto">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m12.5 7.5-5 5m0-5 5 5m5.833-2.5a8.333 8.333 0 1 1-16.667 0 8.333 8.333 0 0 1 16.667 0" stroke="#FF532E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
+                            <p className="text-center">{currency}{product.offerPrice * product.quantity}</p>
+                            <button onClick={()=>removeFromCart()} className="cursor-pointer mx-auto">
+                              <img src={assets.remove_icon} alt="remove" className="inline-block w-6 h-6 " />
                             </button>
                         </div>)
                     )}
