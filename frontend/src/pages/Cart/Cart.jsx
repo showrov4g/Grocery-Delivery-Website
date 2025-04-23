@@ -101,11 +101,11 @@ const Cart = () => {
                             {showAddress && (
                                 <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
                                     {address.map((addr, index) => (
-                                        <p onClick={() => setShowAddress(false)} className="text-gray-500 p-2 hover:bg-gray-100">
+                                        <p onClick={() => {setSelectedAddress(addr); setShowAddress(false)}} className="text-gray-500 p-2 hover:bg-gray-100">
                                             {addr.street}, {addr.city},{addr.city},{addr.country}
                                         </p>
                                     ))}
-                                    <p onClick={() => setShowAddress(false)} className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10">
+                                    <p onClick={() => navigate("/add-address")} className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10">
                                         Add address
                                     </p>
                                 </div>
@@ -114,7 +114,7 @@ const Cart = () => {
 
                         <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
 
-                        <select className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
+                        <select onChange={} className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
                             <option value="COD">Cash On Delivery</option>
                             <option value="Online">Online Payment</option>
                         </select>
