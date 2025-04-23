@@ -65,7 +65,7 @@ const Cart = () => {
                                         <div className='flex items-center'>
                                             <p>Qty:</p>
                                             <select className='outline-none'>
-                                                {Array(cartItems[product._id]>9 ? cartItems[product._id] : 9).fill('').map((_, index) => (
+                                                {Array(cartItems[product._id] > 9 ? cartItems[product._id] : 9).fill('').map((_, index) => (
                                                     <option key={index} value={index + 1}>{index + 1}</option>
                                                 ))}
                                             </select>
@@ -74,14 +74,14 @@ const Cart = () => {
                                 </div>
                             </div>
                             <p className="text-center">{currency}{product.offerPrice * product.quantity}</p>
-                            <button onClick={()=>removeFromCart()} className="cursor-pointer mx-auto">
-                              <img src={assets.remove_icon} alt="remove" className="inline-block w-6 h-6 " />
+                            <button onClick={() => removeFromCart()} className="cursor-pointer mx-auto">
+                                <img src={assets.remove_icon} alt="remove" className="inline-block w-6 h-6 " />
                             </button>
                         </div>)
                     )}
 
-                    <button onClick={()=>{navigate("/products"); scrollTo(0,0)}} className="group cursor-pointer flex items-center mt-8 gap-2 text-indigo-500 font-medium">
-                       <img className="group-hover:-translate-x-1" src={assets.arrow_right_icon_colored} alt="arrow" />
+                    <button onClick={() => { navigate("/products"); scrollTo(0, 0) }} className="group cursor-pointer flex items-center mt-8 gap-2 text-indigo-500 font-medium">
+                        <img className="group-hover:-translate-x-1" src={assets.arrow_right_icon_colored} alt="arrow" />
                         Continue Shopping
                     </button>
 
@@ -94,15 +94,17 @@ const Cart = () => {
                     <div className="mb-6">
                         <p className="text-sm font-medium uppercase">Delivery Address</p>
                         <div className="relative flex justify-between items-start mt-2">
-                            <p className="text-gray-500">No address found</p>
+                            <p className="text-gray-500"> {selectedAddress ? `${selectedAddress.street}, ${selectedAddress.city},${selectedAddress.state}, ${selectedAddress.country}` : "No address found"}</p>
                             <button onClick={() => setShowAddress(!showAddress)} className="text-indigo-500 hover:underline cursor-pointer">
                                 Change
                             </button>
                             {showAddress && (
                                 <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
-                                    <p onClick={() => setShowAddress(false)} className="text-gray-500 p-2 hover:bg-gray-100">
-                                        New York, USA
-                                    </p>
+                                    {address.map((addr, index) => (
+                                        <p onClick={() => setShowAddress(false)} className="text-gray-500 p-2 hover:bg-gray-100">
+                                            {addr.street}, {addr.city},{addr.city},{addr.country}
+                                        </p>
+                                    ))}
                                     <p onClick={() => setShowAddress(false)} className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10">
                                         Add address
                                     </p>
