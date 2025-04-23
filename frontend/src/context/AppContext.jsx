@@ -8,7 +8,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
     // currency data 
-    const currency = import.meta.VITE_CURRENCY
+    const currency = import.meta.env.VITE_CURRENCY;
 
     const navigate = useNavigate();
     // state variables 
