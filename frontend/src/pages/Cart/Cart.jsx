@@ -94,6 +94,7 @@ const Cart = () => {
                     <div className="flex items-center">
                       <p>Qty:</p>
                       <select
+                    
                         className="outline-none ml-2"
                         value={product.quantity}
                         onChange={(e) =>
