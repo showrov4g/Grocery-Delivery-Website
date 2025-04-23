@@ -101,7 +101,7 @@ const Cart = () => {
                             {showAddress && (
                                 <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
                                     {address.map((addr, index) => (
-                                        <p onClick={() => {setSelectedAddress(addr); setShowAddress(false)}} className="text-gray-500 p-2 hover:bg-gray-100">
+                                        <p onClick={() => { setSelectedAddress(addr); setShowAddress(false) }} className="text-gray-500 p-2 hover:bg-gray-100">
                                             {addr.street}, {addr.city},{addr.city},{addr.country}
                                         </p>
                                     ))}
@@ -114,7 +114,7 @@ const Cart = () => {
 
                         <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
 
-                        <select onChange={(e)=>setPaymetnOptions(e.target.value)} className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
+                        <select onChange={(e) => setPaymetnOptions(e.target.value)} className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
                             <option value="COD">Cash On Delivery</option>
                             <option value="Online">Online Payment</option>
                         </select>
@@ -124,13 +124,13 @@ const Cart = () => {
 
                     <div className="text-gray-500 mt-4 space-y-2">
                         <p className="flex justify-between">
-                            <span>Price</span><span>$20</span>
+                            <span>Price</span><span>{currency}{getCartAmount()}</span>
                         </p>
                         <p className="flex justify-between">
                             <span>Shipping Fee</span><span className="text-green-600">Free</span>
                         </p>
                         <p className="flex justify-between">
-                            <span>Tax (2%)</span><span>$20</span>
+                            <span>Tax (2%)</span><span>{currency}{(getCartAmount() * 2) / 100}</span>
                         </p>
                         <p className="flex justify-between text-lg font-medium mt-3">
                             <span>Total Amount:</span><span>$20</span>
