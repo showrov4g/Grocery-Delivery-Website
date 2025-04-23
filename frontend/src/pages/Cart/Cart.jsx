@@ -138,7 +138,7 @@ const Cart = () => {
               navigate("/products");
               window.scrollTo(0, 0);
             }}
-            className="group cursor-pointer flex items-center mt-8 gap-2 text-indigo-500 font-medium"
+            className="group cursor-pointer flex items-center mt-8 gap-2 text-primary font-medium"
           >
             <img
               className="group-hover:-translate-x-1"
@@ -164,7 +164,7 @@ const Cart = () => {
               </p>
               <button
                 onClick={() => setShowAddress(!showAddress)}
-                className="text-indigo-500 hover:underline cursor-pointer"
+                className="text-primary hover:underline cursor-pointer"
               >
                 Change
               </button>
@@ -184,7 +184,7 @@ const Cart = () => {
                   ))}
                   <p
                     onClick={() => navigate("/add-address")}
-                    className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10"
+                    className="text-primary text-center cursor-pointer p-2 hover:bg-primary/10"
                   >
                     Add address
                   </p>
@@ -232,7 +232,7 @@ const Cart = () => {
 
           <button
             onClick={placeOrder}
-            className="w-full py-3 mt-6 cursor-pointer bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition"
+            className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition"
           >
             {paymentOptions === "COD" ? "Place Order" : "Proceed to checkout"}
           </button>
