@@ -50,7 +50,7 @@ const Cart = () => {
         <div className="flex-1 max-w-4xl">
           <h1 className="text-3xl font-medium mb-6">
             Shopping Cart{" "}
-            <span className="text-sm text-indigo-500">
+            <span className="text-sm text-primary">
               {getCartCount()} Items
             </span>
           </h1>
