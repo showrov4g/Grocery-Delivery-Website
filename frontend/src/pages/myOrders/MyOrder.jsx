@@ -3,7 +3,11 @@ import React from 'react'
 const MyOrder = () => {
   return (
     <div>
-      <p>My orders</p>
+      <div>
+        <p>My orders</p>
+        <div className='w-16 h-0.5 bg-primary rounded-full '></div>
+      </div>
+
     </div>
   )
 }
