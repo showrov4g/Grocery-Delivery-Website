@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAppContext } from '../../context/AppContext';
+import { dummyOrders } from '../../assets/assets';
 
 const MyOrder = () => {
+  const [myOrders, setMyOrders] = useState();
+  const {currency} = useAppContext();
+
+  const fetchMyOrder = async()=>{
+    setMyOrders(dummyOrders)
+  }
+  useEffect(()=>{
+    fetchMyOrder()
+  },[])
+
   return (
     <div className='mt-16 pb-16'>
       <div className='flex flex-col items-end w-max mb-8'>
