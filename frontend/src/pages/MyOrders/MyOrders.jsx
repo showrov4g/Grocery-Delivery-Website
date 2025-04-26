@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MyOrders = () => {
+const Myorders = () => {
     return (
         <div>
             <div className='flex flex-col items-end mb-8'>
@@ -9,6 +9,6 @@ const MyOrders = () => {
             </div>
         </div>
     )
-} 
+}
 
-export default MyOrders
+export default Myorders
