@@ -29,14 +29,22 @@ const MyOrder = () => {
             </p>
             {
               order.items.map((item, index) => (
-                <div key={index} className='flex items-center mb-4 md:mb-0'>
-                  <div className='bg-primary/10 rounded-lg'>
-                    <img src={item.product.image[0]} alt="order image" className='w-16 h-16' />
+                <div key={index} >
+                  <div className='flex items-center mb-4 md:mb-0'>
+                    <div className='bg-primary/10 rounded-lg'>
+                      <img src={item.product.image[0]} alt="order image" className='w-16 h-16' />
+                    </div>
+                    <div className='ml-4'>
+                      <h2 className='text-xl font-medium text-gray-800'>{item.product.name}</h2>
+                      <p>Category: {item.product.category}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h2>{item.product.name}</h2>
-                    <p>Category: {item.product.category}</p>
+                  <div className='text-primary text-lg font-medium '>
+                    <p>Quantity: {item.quantity || "1"}</p>
+                    <p>Status: {order.status || "1"}</p>
+                    <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   </div>
+                  <p className='text-primary text-lg font-medium'>Amount: {currency}{item.product.offerPrice * item.quantity}</p>
                 </div>
               ))
             }
