@@ -4,14 +4,14 @@ import { dummyOrders } from '../../assets/assets';
 
 const MyOrder = () => {
   const [myOrders, setMyOrders] = useState();
-  const {currency} = useAppContext();
+  const { currency } = useAppContext();
 
-  const fetchMyOrder = async()=>{
+  const fetchMyOrder = async () => {
     setMyOrders(dummyOrders)
   }
-  useEffect(()=>{
+  useEffect(() => {
     fetchMyOrder()
-  },[])
+  }, [])
 
   return (
     <div className='mt-16 pb-16'>
@@ -20,13 +20,26 @@ const MyOrder = () => {
         <div className='w-16 h-0.5 bg-primary rounded-full '></div>
       </div>
       {
-        myOrders?.map((order, index)=>(
+        myOrders?.map((order, index) => (
           <div key={index} className='border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-4xl'>
             <p className='flex justify-between md:items-center text-gray-400 md:font-medium max-md:flex-col'>
               <span>Order id: {order._id}</span>
               <span>Payment: {order.paymentType}</span>
               <span>Total Amount: {currency}{order.amount}</span>
             </p>
+            {
+              order.items.map((item, index) => (
+                <div key={index} className='flex items-center mb-4 md:mb-0'>
+                  <div className='bg-primary/10 rounded-lg'>
+                    <img src={item.product.image[0]} alt="order image" className='w-16 h-16' />
+                  </div>
+                  <div>
+                    <h2>{item.product.name}</h2>
+                    <p>Category: {item.product.category}</p>
+                  </div>
+                </div>
+              ))
+            }
           </div>
         ))
       }
