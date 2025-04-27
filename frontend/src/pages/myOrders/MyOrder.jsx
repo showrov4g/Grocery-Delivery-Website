@@ -29,7 +29,7 @@ const MyOrder = () => {
             </p>
             {
               order.items.map((item, index) => (
-                <div key={index} className={`relative bg-white text-gray-700/70 ${order.items.length !== index + 1 && "border-b "}`}>
+                <div key={index} className={`relative bg-white text-gray-700/70 ${order.items.length !== index + 1 && "border-b"} border-gray-300 flex flex-col md:flex-row md:items-center justify-between p-4 py-5 md:gap-16 w-full max-w-4xl`}>
                   <div className='flex items-center mb-4 md:mb-0'>
                     <div className='bg-primary/10 rounded-lg'>
                       <img src={item.product.image[0]} alt="order image" className='w-16 h-16' />
@@ -39,7 +39,7 @@ const MyOrder = () => {
                       <p>Category: {item.product.category}</p>
                     </div>
                   </div>
-                  <div className='text-primary text-lg font-medium '>
+                  <div className='flex flex-col justify-center md:ml-8 mb-4 md:mb-0'>
                     <p>Quantity: {item.quantity || "1"}</p>
                     <p>Status: {order.status || "1"}</p>
                     <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
