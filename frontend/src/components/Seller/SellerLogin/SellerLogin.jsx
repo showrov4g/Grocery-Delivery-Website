@@ -21,8 +21,8 @@ const SellerLogin = () => {
 
   return !isSeller && (
     <form onSubmit={onSubmitHandler} className='min-h-screen flex items-center text-sm text-gray-600'>
-        <div>
-            <p><span>Seller</span>Login</p>
+        <div className='flex flex-col gap-5 m-auto items-start p-8 py-12 min-w-80 sm:min-w-88 rounded-lg shadow-xl border border-b-gray-200 '>
+            <p className='text-2xl font-medium mx-auto'><span className='text-primary'>Seller</span>Login</p>
         </div>
     </form>
   )
