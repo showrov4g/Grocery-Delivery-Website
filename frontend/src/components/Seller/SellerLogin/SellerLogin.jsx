@@ -34,6 +34,7 @@ const SellerLogin = () => {
                     <button className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer">Login</button>
             </div>
         </form>
+        
     )
 }
 
