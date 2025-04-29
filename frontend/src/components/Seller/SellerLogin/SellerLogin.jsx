@@ -4,7 +4,7 @@ import { useAppContext } from '../../../context/AppContext'
 const SellerLogin = () => {
     const { isSeller, setIsSeller, navigate, } = useAppContext();
     const [email, setEmail] = useState('');
-    const [passwrod, setPassword] = useState('');
+    const [password, setPassword] = useState('');
 
 
     useEffect(() => {
@@ -25,11 +25,11 @@ const SellerLogin = () => {
                 <p className='text-2xl font-medium mx-auto'><span className='text-primary'>Seller</span>Login</p>
                 <div className='w-full'>
                     <p>Email</p>
-                    <input type="email" placeholder='Enter you email' className='border border-gray-200 rounded w-full p-2 mt-1 outline-primary' required/>
+                    <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder='Enter you email' className='border border-gray-200 rounded w-full p-2 mt-1 outline-primary' required/>
                 </div>
                 <div className='w-full'>
                     <p>Password</p>
-                    <input type="password" placeholder='Enter you password' className='border border-gray-200 rounded w-full p-2 mt-1 outline-primary' required/>
+                    <input  onChange={(e)=>setPassword(e.target.value)} value={password} type="password" placeholder='Enter you password' className='border border-gray-200 rounded w-full p-2 mt-1 outline-primary' required/>
                 </div>
                     <button className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer">Login</button>
             </div>
