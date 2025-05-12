@@ -24,8 +24,16 @@ const AddProduct = () => {
                         {Array(4).fill('').map((_, index) => (
                             <label key={index} htmlFor={`image${index}`}>
                                 {/* input start  */}
-                                <input accept="image/*" type="file" id={`image${index}`} hidden />
+
+                                <input onChange={(e)=>{
+                                    const updatedFiles = [...files];
+                                    updatedFiles[index] = e.target.files[0];
+                                    setFiles(updatedFiles);
+                                }} 
+                                
+                                accept="image/*" type="file" id={`image${index}`} hidden />
                                 {/* input end  */}
+
                                 <img className="max-w-24 cursor-pointer" src={files[index] ? URL.createObjectURL(files[index]): assets.upload_area} alt="uploadArea" width={100} height={100} />
                             </label>
                         ))}
