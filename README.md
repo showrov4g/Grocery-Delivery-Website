@@ -13,3 +13,4 @@ jsonwebtoken
 mongoose
 multer
 stripe
+nodemon
